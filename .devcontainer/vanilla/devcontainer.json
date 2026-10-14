@@ -1,0 +1,10 @@
+{
+    "name": "std-next vanilla Devcontainer",
+    "build": {
+        "dockerfile": "../../.arkitekt/flavours/vanilla/Dockerfile",
+        "context": "../.."
+    },
+    "runArgs": [
+        "--network=host"
+    ]
+}

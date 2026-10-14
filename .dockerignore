@@ -1,0 +1,7 @@
+# Credentials and local state must not be baked into the image
+.arkitekt/cache/
+**/*fakts_cache.json
+.git/
+.venv/
+__pycache__/
+.pytest_cache/

@@ -1,0 +1,8 @@
+numpy
+xarray
+pandas
+scipy
+scikit-image
+scikit-learn
+opencv-python-headless
+pooch
