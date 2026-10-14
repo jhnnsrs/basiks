@@ -31,9 +31,12 @@ derives from the lens, so it lands in the input's coordinate space. Cutting
 ## Running
 
 ```bash
-pip install -r requirements.txt "arkitekt[all]" "mikro[table]"
-arkitekt run dev
+uv sync
+uv run arkitekt run dev
 ```
+
+Dependencies live in `pyproject.toml` and are locked in `uv.lock`: add one with
+`uv add <package>`.
 
 The image is built from `.arkitekt/flavours/vanilla/`. It bakes the scikit-image
 sample data in via `init.py`.

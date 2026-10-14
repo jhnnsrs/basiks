@@ -71,9 +71,11 @@ from mikro.arkitekt.specs import (
 )
 
 
+__version__ = "0.1.0"
+
 app = App(
-    "std-next",
-    "0.1.0",
+    "basiks",
+    __version__,
     description="The standard library: measuring, thresholding, projecting, resizing, cutting and test data",
     author="jhnnsrs",
 )

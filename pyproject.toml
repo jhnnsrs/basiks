@@ -1,0 +1,33 @@
+[project]
+name = "basiks"
+version = "0.1.0"
+description = "The standard library: measuring, thresholding, projecting, resizing, cutting and test data"
+readme = "README.md"
+authors = [
+    { name = "Johannes Roos", email = "jhnnsrs@gmail.com" }
+]
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "arkitekt[all]>=6.6.0",
+    # Merge Tables uploads a table: pyarrow, pandas and duckdb.
+    "mikro[table]>=8.0.0",
+    "numpy",
+    "xarray",
+    "pandas",
+    "scipy",
+    "scikit-image",
+    "scikit-learn",
+    "opencv-python-headless",
+    # What scikit-image downloads its sample data with (init.py).
+    "pooch",
+]
+
+[tool.semantic_release]
+version_variables = ["app.py:__version__"]
+commit_message = "chore(release): {version} [skip ci]"
+tag_format = "v{version}"
+allow_zero_version = true
+
+[tool.semantic_release.branches.release]
+match = "main"
+prerelease = false

@@ -1,5 +1,5 @@
 {
-    "name": "std-next vanilla Devcontainer",
+    "name": "basiks vanilla Devcontainer",
     "build": {
         "dockerfile": "../../.arkitekt/flavours/vanilla/Dockerfile",
         "context": "../.."
