@@ -73,7 +73,7 @@ from mikro.arkitekt.specs import (
 from logos import declare_logos, logo_of
 
 
-__version__ = "1.0.0"
+__version__ = "1.1.0"
 
 app = App(
     "basiks",
