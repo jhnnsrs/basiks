@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.1.1 (2026-10-15)
+
+### Bug Fixes
+
+- The ignore files list the agent's journal, so a release finds the tree clean
+  ([`0b741f8`](https://github.com/jhnnsrs/basiks/commit/0b741f86ec43b8844423670f1db5578d115edecc))
+
+
 ## v1.1.0 (2026-10-15)
 
 ### Build System
