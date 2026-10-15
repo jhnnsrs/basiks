@@ -28,6 +28,16 @@ derives from the lens, so it lands in the input's coordinate space. Cutting
 | viewing | Show Normalized / Show Perceptually | a lens | a new scene, one layer per channel, contrast set from the data |
 | segmentation | Mark Clusters | a 2D label lens | rectangle annotations around dense clusters of objects |
 
+## Logos
+
+`logos.py` draws the app's logo (a LOGO blok in colours of its own, the app's
+default) and one action logo per action (ACTION_LOGO bloks). Action logos paint
+only with the viewer's palette (`ink`, `muted`, `brand`, `brand-strong`,
+`brand-soft`, `surface`), so they follow the viewer's brand and dark mode, and
+their shapes animate on hover and while the viewer's run of the action is going.
+A new action gets its logo there, under its function's name, and
+`logo=logo_of("<function>")` on its decorator.
+
 ## Running
 
 ```bash

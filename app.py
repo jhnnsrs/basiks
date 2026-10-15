@@ -70,6 +70,8 @@ from mikro.arkitekt.specs import (
     Volume,
 )
 
+from logos import declare_logos, logo_of
+
 
 __version__ = "1.0.0"
 
@@ -80,6 +82,7 @@ app = App(
     author="jhnnsrs",
 )
 app.service(mikro_service)
+declare_logos(app)
 
 LEVELS = 4
 """Pyramid levels for every dataset this app uploads, the base included."""
@@ -247,7 +250,7 @@ def _publish_mask(
 # --------------------------------------------------------------------------- #
 # Measuring
 # --------------------------------------------------------------------------- #
-@app.action(name="Measure Max", collections=["quantitative"])
+@app.action(name="Measure Max", collections=["quantitative"], logo=logo_of("measure_max"))
 def measure_max(
     image: Annotated[ArrayLens, Description("The image to measure")],
 ) -> float:
@@ -255,7 +258,7 @@ def measure_max(
     return float(image.data.max().compute())
 
 
-@app.action(name="Measure Sum", collections=["quantitative"])
+@app.action(name="Measure Sum", collections=["quantitative"], logo=logo_of("measure_sum"))
 def measure_sum(
     image: Annotated[ArrayLens, Description("The image to measure")],
 ) -> float:
@@ -263,7 +266,7 @@ def measure_sum(
     return float(image.data.sum().compute())
 
 
-@app.action(name="Measure Fraction", collections=["quantitative"])
+@app.action(name="Measure Fraction", collections=["quantitative"], logo=logo_of("measure_fraction"))
 def measure_fraction(
     image: Annotated[ArrayLens, Description("The image to measure")],
     target: Annotated[float, Description("The value to count")] = 1,
@@ -273,7 +276,7 @@ def measure_fraction(
     return float((data == target).sum().compute()) / max(int(data.size), 1)
 
 
-@app.action(name="Measure Basic Metrics", collections=["quantitative"])
+@app.action(name="Measure Basic Metrics", collections=["quantitative"], logo=logo_of("measure_basics"))
 def measure_basics(
     image: Annotated[ArrayLens, Description("The image to measure")],
 ) -> tuple[float, float, float]:
@@ -291,7 +294,7 @@ def measure_basics(
 # --------------------------------------------------------------------------- #
 # Collections
 # --------------------------------------------------------------------------- #
-@app.action(name="Iterate Images", collections=["collection"])
+@app.action(name="Iterate Images", collections=["collection"], logo=logo_of("iterate_images"))
 def iterate_images(
     folder: Annotated[Folder, Description("The folder to list")],
     *,
@@ -311,7 +314,7 @@ def iterate_images(
         offset += PAGE
 
 
-@app.action(name="Merge Tables", collections=["organization"])
+@app.action(name="Merge Tables", collections=["organization"], logo=logo_of("merge_tables"))
 def merge_tables(
     tables: Annotated[list[TableDataset], Description("The tables to merge")],
     *,
@@ -371,7 +374,7 @@ def _cut(
         )
 
 
-@app.action(name="Timeseries to Frames", collections=["conversion"])
+@app.action(name="Timeseries to Frames", collections=["conversion"], logo=logo_of("t_to_frame"))
 def t_to_frame(
     image: Annotated[Timeseries, Description("The timeseries to cut")],
     interval: Annotated[int, Description("How many timepoints each frame spans")] = 1,
@@ -386,7 +389,7 @@ def t_to_frame(
     yield from _cut(mikro, image, time_axis, interval, "frame")
 
 
-@app.action(name="Volume to Slices", collections=["conversion"])
+@app.action(name="Volume to Slices", collections=["conversion"], logo=logo_of("z_to_slice"))
 def z_to_slice(
     image: Annotated[Volume, Description("The volume to cut")],
     interval: Annotated[int, Description("How many planes each slice spans")] = 1,
@@ -401,7 +404,7 @@ def z_to_slice(
     yield from _cut(mikro, image, depth_axis, interval, "slice")
 
 
-@app.action(name="Crop to Annotation", collections=["conversion", "cropping"])
+@app.action(name="Crop to Annotation", collections=["conversion", "cropping"], logo=logo_of("crop_image"))
 def crop_image(
     annotation: Annotated[Annotation, Description("The shape to crop to")],
     image: Annotated[ArrayLens, Description("The lens the shape was drawn over")],
@@ -419,7 +422,7 @@ def crop_image(
 # --------------------------------------------------------------------------- #
 # Creation
 # --------------------------------------------------------------------------- #
-@app.action(name="Create Random Image", collections=["creation"])
+@app.action(name="Create Random Image", collections=["creation"], logo=logo_of("create_random_image"))
 def create_random_image(
     width: Annotated[int, Description("The width of the image")] = 100,
     height: Annotated[int, Description("The height of the image")] = 100,
@@ -532,7 +535,7 @@ def load_sample(kind: DataKind) -> xr.DataArray:
     return xr.DataArray(raw, dims=SAMPLE_DIMS[kind])
 
 
-@app.action(name="Generate Test Image", collections=["generator"])
+@app.action(name="Generate Test Image", collections=["generator"], logo=logo_of("generate_test_image"))
 def generate_test_image(
     kind: Annotated[DataKind, Description("The sample to load")],
     *,
@@ -552,7 +555,7 @@ def generate_test_image(
 # --------------------------------------------------------------------------- #
 # Processing
 # --------------------------------------------------------------------------- #
-@app.action(name="Resize", collections=["processing", "scaling"])
+@app.action(name="Resize", collections=["processing", "scaling"], logo=logo_of("resize"))
 def resize(
     image: Annotated[ArrayLens, Description("The image to resize")],
     dim_x: Annotated[int | None, Description("The new extent of x (unchanged if unset)")] = None,
@@ -601,7 +604,7 @@ class ThresholdMethod(Enum):
     MIN = "min"
 
 
-@app.action(name="Binarize", collections=["processing", "thresholding"])
+@app.action(name="Binarize", collections=["processing", "thresholding"], logo=logo_of("threshold_image"))
 def threshold_image(
     image: Annotated[ArrayLens, Description("The image to binarize")],
     threshold: Annotated[float, Description("The fraction of the reference value to cut at")] = 0.5,
@@ -637,7 +640,7 @@ NORM_BOUNDS = {
 }
 
 
-@app.action(name="Adaptive Binarize", collections=["processing", "thresholding", "adaptive"])
+@app.action(name="Adaptive Binarize", collections=["processing", "thresholding", "adaptive"], logo=logo_of("adaptive_threshold_image"))
 def adaptive_threshold_image(
     image: Annotated[Planes, Description("The image to binarize")],
     normtype: Annotated[CV2NormTypes, Description("How each plane is normalized first")] = CV2NormTypes.NORM_MINMAX,
@@ -659,7 +662,7 @@ def adaptive_threshold_image(
     return _publish_mask(mikro, image, mask, dims, f"Adaptive Binarized {_title(mikro, image)}")
 
 
-@app.action(name="Otsu Thresholding", collections=["processing", "thresholding", "adaptive"])
+@app.action(name="Otsu Thresholding", collections=["processing", "thresholding", "adaptive"], logo=logo_of("otsu_thresholding"))
 def otsu_thresholding(
     image: Annotated[Planes, Description("The image to binarize")],
     gaussian_blur: Annotated[bool, Description("Blur each plane first (5x5 kernel)")] = False,
@@ -683,7 +686,7 @@ def otsu_thresholding(
     return _publish_mask(mikro, image, mask, dims, f"Otsu Thresholded {_title(mikro, image)}")
 
 
-@app.action(name="Maximum Intensity Projection", collections=["processing", "projection"])
+@app.action(name="Maximum Intensity Projection", collections=["processing", "projection"], logo=logo_of("maximum_intensity_projection"))
 def maximum_intensity_projection(
     image: Annotated[Volume, Description("The volume to project")],
     *,
@@ -702,7 +705,7 @@ def maximum_intensity_projection(
     )
 
 
-@app.action(name="Build Pyramid", collections=["processing", "scaling"])
+@app.action(name="Build Pyramid", collections=["processing", "scaling"], logo=logo_of("multiscale_image"))
 def multiscale_image(
     image: Annotated[ArrayLens, Description("The image to give a pyramid")],
     *,
@@ -787,7 +790,7 @@ def _show_with_contrast(
     return scene
 
 
-@app.action(name="Show Normalized", collections=["rescale", "viewing"])
+@app.action(name="Show Normalized", collections=["rescale", "viewing"], logo=logo_of("rescale_channel"))
 def rescale_channel(
     image: Annotated[ArrayLens, Description("The image to show")],
     *,
@@ -801,7 +804,7 @@ def rescale_channel(
     )
 
 
-@app.action(name="Show Perceptually", collections=["rescale", "viewing"])
+@app.action(name="Show Perceptually", collections=["rescale", "viewing"], logo=logo_of("rescale_channel_perceptually"))
 def rescale_channel_perceptually(
     image: Annotated[ArrayLens, Description("The image to show")],
     *,
@@ -850,7 +853,7 @@ def cluster_boxes(
     return boxes
 
 
-@app.action(name="Mark Clusters", collections=["segmentation"])
+@app.action(name="Mark Clusters", collections=["segmentation"], logo=logo_of("mark_clusters_of_size_rectangle"))
 def mark_clusters_of_size_rectangle(
     image: Annotated[LabelPlane, Description("The label image whose objects to cluster")],
     distance: Annotated[float, Description("The distance between centroids in a cluster (DBSCAN eps)")],
