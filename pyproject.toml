@@ -8,9 +8,9 @@ authors = [
 ]
 requires-python = ">=3.12,<3.13"
 dependencies = [
-    "arkitekt[all]>=6.7.0",
+    "arkitekt[all]>=8.0.0",
     # Merge Tables uploads a table: pyarrow, pandas and duckdb.
-    "mikro[table]>=8.0.0",
+    "mikro[table]>=10.1.0",
     "numpy",
     "xarray",
     "pandas",
