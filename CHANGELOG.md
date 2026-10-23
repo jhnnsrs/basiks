@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.1.2 (2026-10-23)
+
+### Bug Fixes
+
+- **deps**: Arkitekt 8, mikro 10.1
+  ([`d799cfd`](https://github.com/jhnnsrs/basiks/commit/d799cfd68814a6d0f78006e9571d8c56e9553608))
+
+
 ## v1.1.1 (2026-10-15)
 
 ### Bug Fixes
