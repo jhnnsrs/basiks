@@ -2,6 +2,19 @@
 
 <!-- version list -->
 
+## v2.1.3 (2026-10-28)
+
+### Bug Fixes
+
+- Release an image built on arkitekt 10.0.2
+  ([`1bacc2a`](https://github.com/jhnnsrs/basiks/commit/1bacc2a969c937a8d94d7889d7714d35e019f8d0))
+
+### Build System
+
+- Lock arkitekt 10.0.2
+  ([`f858e97`](https://github.com/jhnnsrs/basiks/commit/f858e97bdd3d82ee1303be69051a70e9bb94c4f2))
+
+
 ## v2.1.2 (2026-10-28)
 
 ### Bug Fixes
