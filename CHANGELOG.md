@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v2.1.0 (2026-10-28)
+
+### Features
+
+- Ask for the scopes the clients need, on arkitekt 10
+  ([`44a529f`](https://github.com/jhnnsrs/basiks/commit/44a529fad14d19b4bda1eb83c42bf315a8fcc6fd))
+
+
 ## v2.0.1 (2026-10-28)
 
 ### Bug Fixes
