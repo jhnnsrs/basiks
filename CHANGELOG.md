@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v2.1.1 (2026-10-28)
+
+### Bug Fixes
+
+- Record the scopes a run asks for (arkitekt 10.0.1)
+  ([`b94b6d5`](https://github.com/jhnnsrs/basiks/commit/b94b6d56ce4fea5147a618e80503592b29a42d92))
+
+
 ## v2.1.0 (2026-10-28)
 
 ### Features
