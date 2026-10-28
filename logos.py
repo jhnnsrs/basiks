@@ -1,8 +1,8 @@
 """The app's logo, and one logo per action
 
-The app's logo is a LOGO blok: an SVG in colours of its own, which a client shows
-beside the app's name. Each action's logo is an ACTION_LOGO blok: the same SVG
-shapes, but painted only with the viewer's palette (``ink``, ``muted``, ``brand``,
+The app's logo is a LOGO blok (an ``<AgentLogo>`` root): an SVG in colours of its own,
+which a client shows beside the app's name. Each action's logo is an ACTION_LOGO blok
+(an ``<ActionLogo>`` root): the same SVG shapes, but painted only with the viewer's palette (``ink``, ``muted``, ``brand``,
 ``brand-strong``, ``brand-soft``, ``surface``), so the actions of every app look like
 one set and follow the viewer's brand and dark mode. A shape that ``animate``s plays
 while the logo is hovered, and while the viewer's run of the action is going.
@@ -20,36 +20,36 @@ APP_LOGO = f"{APP}_logo"
 # Four building blocks on a dark tile: a histogram, a binarized disc, a pyramid and
 # a stack of slices. What the standard library does, in one picture.
 APP_LOGO_SOURCE = """
-<SVG viewBox="0 0 64 64" title="basiks">
+<AgentLogo viewBox="0 0 64 64" title="basiks">
   <Defs>
     <LinearGradient id="ground" x1="0" y1="0" x2="1" y2="1">
-      <Stop offset="0" stopColor="#111827" />
-      <Stop offset="1" stopColor="#1e293b" />
+      <Stop offset="0" stopColor="ink" />
+      <Stop offset="1" stopColor="ink" />
     </LinearGradient>
   </Defs>
   <Rect x="0" y="0" width="64" height="64" rx="14" fill="url(#ground)" />
-  <Rect x="9" y="9" width="21" height="21" rx="5" fill="#2dd4bf" />
-  <Rect x="34" y="9" width="21" height="21" rx="5" fill="#fbbf24" />
-  <Rect x="9" y="34" width="21" height="21" rx="5" fill="#a78bfa" />
-  <Rect x="34" y="34" width="21" height="21" rx="5" fill="#fb7185" />
-  <G fill="#0b1220">
+  <Rect x="9" y="9" width="21" height="21" rx="5" fill="spectrum-cyan" />
+  <Rect x="34" y="9" width="21" height="21" rx="5" fill="spectrum-yellow" />
+  <Rect x="9" y="34" width="21" height="21" rx="5" fill="spectrum-violet" />
+  <Rect x="34" y="34" width="21" height="21" rx="5" fill="spectrum-red" />
+  <G fill="ink">
     <Rect x="13" y="19.5" width="3.5" height="6" rx="0.8" />
     <Rect x="18.25" y="14" width="3.5" height="11.5" rx="0.8" />
     <Rect x="23.5" y="17.5" width="3.5" height="8" rx="0.8" />
   </G>
-  <Circle cx="44.5" cy="19.5" r="6.5" fill="none" stroke="#0b1220" strokeWidth="2.2" />
-  <Path d="M44.5 13a6.5 6.5 0 0 0 0 13Z" fill="#0b1220" />
-  <G fill="#0b1220">
+  <Circle cx="44.5" cy="19.5" r="6.5" fill="none" stroke="ink" strokeWidth="2.2" />
+  <Path d="M44.5 13a6.5 6.5 0 0 0 0 13Z" fill="ink" />
+  <G fill="ink">
     <Rect x="12.5" y="47.5" width="14" height="3.5" rx="0.8" />
     <Rect x="15" y="43" width="9" height="3.5" rx="0.8" />
     <Rect x="17.5" y="38.5" width="4" height="3.5" rx="0.8" />
   </G>
-  <G fill="none" stroke="#0b1220" strokeWidth="2" strokeLinejoin="round">
-    <Polygon points="44.5,43 51.5,46.5 44.5,50 37.5,46.5" fill="#0b1220" fillOpacity="0.3" />
+  <G fill="none" stroke="ink" strokeWidth="2" strokeLinejoin="round">
+    <Polygon points="44.5,43 51.5,46.5 44.5,50 37.5,46.5" fill="ink" fillOpacity="0.3" />
     <Polygon points="44.5,38 51.5,41.5 44.5,45 37.5,41.5" />
   </G>
-  <Rect x="0.5" y="0.5" width="63" height="63" rx="13.5" fill="none" stroke="#94a3b8" strokeOpacity="0.3" strokeWidth="1" />
-</SVG>
+  <Rect x="0.5" y="0.5" width="63" height="63" rx="13.5" fill="none" stroke="muted" strokeOpacity="0.3" strokeWidth="1" />
+</AgentLogo>
 """
 
 # Shared strokes: an outline in ink, rounded.
@@ -307,8 +307,7 @@ def declare_logos(app: App) -> None:
         APP_LOGO,
         APP_LOGO_SOURCE,
         description="Four building blocks: a histogram, a binarized disc, a pyramid and a stack of slices.",
-        context="logo",
         default=True,
     )
     for action, source in ACTION_LOGOS.items():
-        app.blok(logo_of(action), source, context="action_logo")
+        app.blok(logo_of(action), source)
