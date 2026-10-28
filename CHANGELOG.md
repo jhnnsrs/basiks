@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v2.0.1 (2026-10-28)
+
+### Bug Fixes
+
+- Bake only the samples the app offers, retrying a rate limit
+  ([`50410e8`](https://github.com/jhnnsrs/basiks/commit/50410e8f568c529900a6640c9065f3b71d6505dc))
+
+
 ## v2.0.0 (2026-10-28)
 
 ### Features
