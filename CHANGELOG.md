@@ -2,6 +2,18 @@
 
 <!-- version list -->
 
+## v2.0.0 (2026-10-28)
+
+### Features
+
+- On arkitekt 9 (blok v2, the organization-identifier servers)
+  ([`40e3329`](https://github.com/jhnnsrs/basiks/commit/40e33296ab64a3d90666610a22742922b3df17ad))
+
+### Breaking Changes
+
+- Needs a hub with the servers of that wave (rekuest 11, mikro 12, ...).
+
+
 ## v1.1.2 (2026-10-23)
 
 ### Bug Fixes
