@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v2.1.2 (2026-10-28)
+
+### Bug Fixes
+
+- The recorded manifest carries the scopes a run asks for (arkitekt 10.0.2)
+  ([`1c3862b`](https://github.com/jhnnsrs/basiks/commit/1c3862bf1348370de242c9bef06b4aa4073197eb))
+
+
 ## v2.1.1 (2026-10-28)
 
 ### Bug Fixes
