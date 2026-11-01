@@ -2,6 +2,19 @@
 
 <!-- version list -->
 
+## v2.1.4 (2026-11-01)
+
+### Bug Fixes
+
+- Release an image built on arkitekt 12.1.0
+  ([`3895d6e`](https://github.com/jhnnsrs/basiks/commit/3895d6eeae6f3c5c6c71560205b7220a4512dd85))
+
+### Build System
+
+- Lock arkitekt 12.1.0
+  ([`9ca3962`](https://github.com/jhnnsrs/basiks/commit/9ca3962ec16edf792f260f4da02083457714acbd))
+
+
 ## v2.1.3 (2026-10-28)
 
 ### Bug Fixes
