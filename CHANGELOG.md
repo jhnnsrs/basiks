@@ -2,6 +2,19 @@
 
 <!-- version list -->
 
+## v2.1.5 (2026-11-01)
+
+### Bug Fixes
+
+- Release an image built on arkitekt 13.0.0
+  ([`5917c05`](https://github.com/jhnnsrs/basiks/commit/5917c051b396f31a3f383d5b2e955806afa96e90))
+
+### Build System
+
+- Lock arkitekt 13.0.0
+  ([`f4a6f61`](https://github.com/jhnnsrs/basiks/commit/f4a6f61738115a68787a1be1605fb15a538cbb9c))
+
+
 ## v2.1.4 (2026-11-01)
 
 ### Bug Fixes
