@@ -15,7 +15,8 @@ Run:  arkitekt run dev
 """
 
 from enum import Enum
-from typing import Annotated, Generator, Iterator, Sequence
+from typing import Annotated
+from collections.abc import Generator, Iterator, Sequence
 
 import cv2
 import numpy as np
