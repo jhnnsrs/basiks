@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v2.1.6 (2026-11-03)
+
+### Bug Fixes
+
+- Build on arkitekt 13.1.0
+  ([`0a58443`](https://github.com/jhnnsrs/basiks/commit/0a584438eef16a5346bfc9e70986f113813b9f30))
+
+
 ## v2.1.5 (2026-11-01)
 
 ### Bug Fixes
