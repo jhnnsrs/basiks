@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v2.1.7 (2026-11-10)
+
+### Bug Fixes
+
+- **deps**: Arkitekt 14.1.0 and mikro 13, with the Open in Arkitekt badge
+  ([`2124124`](https://github.com/jhnnsrs/basiks/commit/2124124081a1b078fc0d24706c32a0db553d56ba))
+
+
 ## v2.1.6 (2026-11-03)
 
 ### Bug Fixes
