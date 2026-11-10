@@ -222,7 +222,7 @@ def _binarize_by_plane(
     image: ArrayLens, task: Task, binarize
 ) -> tuple[xr.DataArray, list[str]]:
     """Run `binarize` over every plane of the last two space axes of `image`."""
-    data = image.data.compute()
+    data = image.xarray_data.compute()
     space = image.axes_of_type(AxisType.SPACE)
     plane_axes = (space[-2], space[-1])
     out = xr.DataArray(np.zeros(data.shape, dtype=np.uint8), dims=data.dims)
@@ -256,7 +256,7 @@ def measure_max(
     image: Annotated[ArrayLens, Description("The image to measure")],
 ) -> float:
     """Measures the maximum value of an image."""
-    return float(image.data.max().compute())
+    return float(image.xarray_data.max().compute())
 
 
 @app.action(name="Measure Sum", collections=["quantitative"], logo=logo_of("measure_sum"))
@@ -264,7 +264,7 @@ def measure_sum(
     image: Annotated[ArrayLens, Description("The image to measure")],
 ) -> float:
     """Measures the sum of all values of an image."""
-    return float(image.data.sum().compute())
+    return float(image.xarray_data.sum().compute())
 
 
 @app.action(name="Measure Fraction", collections=["quantitative"], logo=logo_of("measure_fraction"))
@@ -273,7 +273,7 @@ def measure_fraction(
     target: Annotated[float, Description("The value to count")] = 1,
 ) -> float:
     """Measures the fraction of the image (0-1) that has exactly this value."""
-    data = image.data
+    data = image.xarray_data
     return float((data == target).sum().compute()) / max(int(data.size), 1)
 
 
@@ -288,7 +288,7 @@ def measure_basics(
         float: The mean
         float: The min
     """
-    x = image.data.compute()
+    x = image.xarray_data.compute()
     return float(x.max()), float(x.mean()), float(x.min())
 
 
@@ -571,7 +571,7 @@ def resize(
     Every other axis keeps its extent. The result is registered into the input's
     space by a scale per axis, so it still lines up with it.
     """
-    data = image.data.compute()
+    data = image.xarray_data.compute()
     wanted = {"x": dim_x, "y": dim_y, "z": dim_z}
     dims = [str(d) for d in data.dims]
     shape = tuple(wanted.get(d) or data.sizes[d] for d in dims)
@@ -614,7 +614,7 @@ def threshold_image(
     mikro: Mikro,
 ) -> Mask:
     """Binarizes an image: 1 where it is above a fraction of its mean, max or min."""
-    data = image.data.compute()
+    data = image.xarray_data.compute()
     reference = {
         ThresholdMethod.MEAN: data.mean,
         ThresholdMethod.MAX: data.max,
@@ -695,7 +695,7 @@ def maximum_intensity_projection(
 ) -> Projection:
     """Projects a volume onto the maximum along its first space axis (z, by convention)."""
     depth_axis = image.axes_of_type(AxisType.SPACE)[0]
-    projected = image.data.max(dim=depth_axis).compute()
+    projected = image.xarray_data.max(dim=depth_axis).compute()
     kept = [str(d) for d in projected.dims]
     return _upload(
         mikro,
@@ -717,7 +717,7 @@ def multiscale_image(
     For datasets that were uploaded with a single level and are too large to view
     smoothly. Every dataset this app uploads already has one.
     """
-    data = image.data.compute()
+    data = image.xarray_data.compute()
     dims = [str(d) for d in data.dims]
     return _upload(
         mikro,
@@ -773,7 +773,7 @@ def _show_with_contrast(
     volumetric = sum(sizes[a] > 1 for a in image.axes_of_type(AxisType.SPACE)) >= 3
 
     for i, channel in enumerate(channels):
-        low, high = limits(channel.data.compute().values)
+        low, high = limits(channel.xarray_data.compute().values)
         settings = dict(
             lens=channel.id,
             scene=scene.id,
@@ -871,7 +871,7 @@ def mark_clusters_of_size_rectangle(
     drawn as the bounding box of its objects, into one new annotation collection.
     """
     space_axes = image.axes_of_type(AxisType.SPACE)
-    data = image.data
+    data = image.xarray_data
     plane = data.squeeze([d for d in data.dims if d not in space_axes])
     labels = np.asarray(plane.transpose(*space_axes).data).astype(np.int64)
 

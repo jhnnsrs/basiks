@@ -1,5 +1,9 @@
 # STDLIB
 
+<!-- arkitekt:badge -->
+[![Open in Arkitekt](https://arkitekt.live/img/badge/open-in-arkitekt.svg)](https://arkitekt.live/deeplink?orkestrator=%2Fdo%2Fv1%2Frepo.install%3Fsource%3Doci%253Aghcr.io%252Fjhnnsrs%252Fbasiks)
+<!-- /arkitekt:badge -->
+
 The standard library: small, general actions over mikro data for the Arkitekt
 platform. These are the everyday steps that a workflow strings together between
 the specialised apps.
