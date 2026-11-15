@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v2.1.10 (2026-11-15)
+
+### Bug Fixes
+
+- **deps**: Arkitekt 17 and arkitekt-spec 11
+  ([`7012887`](https://github.com/jhnnsrs/basiks/commit/701288747825d1ccdd65ececa6b3534c503fca2c))
+
+
 ## v2.1.9 (2026-11-15)
 
 ### Bug Fixes
