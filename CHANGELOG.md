@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v2.1.8 (2026-11-15)
+
+### Bug Fixes
+
+- **deps**: Arkitekt 16, on agent protocol 2
+  ([`3f44007`](https://github.com/jhnnsrs/basiks/commit/3f44007fecdad78878a31dcc3d9e0b86b7659e86))
+
+
 ## v2.1.7 (2026-11-10)
 
 ### Bug Fixes
