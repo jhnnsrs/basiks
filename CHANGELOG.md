@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v2.1.9 (2026-11-15)
+
+### Bug Fixes
+
+- **deps**: Rekuest 15.0.1 and arkitekt-runtime 10.0.1
+  ([`677b23e`](https://github.com/jhnnsrs/basiks/commit/677b23e2324cacd1d33d54a7798ce071ddab0abc))
+
+
 ## v2.1.8 (2026-11-15)
 
 ### Bug Fixes
