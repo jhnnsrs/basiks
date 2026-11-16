@@ -34,8 +34,8 @@ derives from the lens, so it lands in the input's coordinate space. Cutting
 
 ## Logos
 
-`logos.py` draws the app's logo (a LOGO blok in colours of its own, the app's
-default) and one action logo per action (ACTION_LOGO bloks). Action logos paint
+`logos.py` draws the app's logo (a `<Blok kind="agent" context="logo">` in colours of its own,
+the app's default) and one action logo per action (`<Blok kind="action" context="logo">`). Action logos paint
 only with the viewer's palette (`ink`, `muted`, `brand`, `brand-strong`,
 `brand-soft`, `surface`), so they follow the viewer's brand and dark mode, and
 their shapes animate on hover and while the viewer's run of the action is going.
