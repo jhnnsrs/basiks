@@ -2,6 +2,19 @@
 
 <!-- version list -->
 
+## v2.1.11 (2026-11-16)
+
+### Bug Fixes
+
+- Bloks are self-contained <Blok kind context> trees
+  ([`6b2ca72`](https://github.com/jhnnsrs/basiks/commit/6b2ca723bd1fb75a7bca5a428686363a769ba074))
+
+### Build System
+
+- Lock arkitekt 18
+  ([`4853d68`](https://github.com/jhnnsrs/basiks/commit/4853d680cafeaedf7771c48880b59f320cc7aa09))
+
+
 ## v2.1.10 (2026-11-15)
 
 ### Bug Fixes
