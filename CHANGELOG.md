@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v2.1.12 (2026-11-24)
+
+### Bug Fixes
+
+- Build on arkitekt 18.5.2, rekuest 18, arkitekt-spec 13 and mikro 14.2
+  ([`fbb0d41`](https://github.com/jhnnsrs/basiks/commit/fbb0d41eefff4847a5150633f6f3b56ba49742f1))
+
+
 ## v2.1.11 (2026-11-16)
 
 ### Bug Fixes
