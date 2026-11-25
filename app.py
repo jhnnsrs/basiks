@@ -36,7 +36,7 @@ from arkitekt import (
     Task,
     run,
 )
-from mikro import Mikro, dataset_arrays, mikro_service
+from mikro import Mikro, dataset_arrays
 from mikro.api.schema import (
     Annotation,
     AnnotationKind,
@@ -82,7 +82,7 @@ app = App(
     description="The standard library: measuring, thresholding, projecting, resizing, cutting and test data",
     author="jhnnsrs",
 )
-app.service(mikro_service)
+app.register_client(Mikro)
 declare_logos(app)
 
 LEVELS = 4
