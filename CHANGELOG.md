@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v2.1.13 (2026-11-25)
+
+### Bug Fixes
+
+- Runs on arkitekt 19
+  ([`dfac117`](https://github.com/jhnnsrs/basiks/commit/dfac117d15d64ec35e8dfd2ac3a56864744c32e3))
+
+
 ## v2.1.12 (2026-11-24)
 
 ### Bug Fixes
